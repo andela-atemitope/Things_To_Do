@@ -1,3 +1,10 @@
 require './config/application.rb'
 
-run ThingsToDo::Application.new
+app = ThingsToDo::Application.new
+
+app.route do
+  match "/", "TodoController#index"
+  match "/create", "TodoController#create"
+end
+
+run app
