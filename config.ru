@@ -1,10 +1,13 @@
+$LOAD_PATH.unshift __dir__
+
 require './config/application.rb'
+ThingsApplication = ThingsToDo::Application.new
+require './config/routes.rb'
+use Rack::Reloader, 0
+use Rack::MethodOverride
+run ThingsApplication
 
-app = ThingsToDo::Application.new
+# define my resources method
+# check for view rendering
 
-app.route do
-  match "/", "TodoController#index"
-  match "/create", "TodoController#create"
-end
-
-run app
+# ORM
